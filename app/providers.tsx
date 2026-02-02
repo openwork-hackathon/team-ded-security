@@ -14,6 +14,7 @@ import {
 } from '@rainbow-me/rainbowkit/wallets';
 import {
   base,
+  baseSepolia,
 } from 'wagmi/chains';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider } from 'wagmi';
@@ -31,7 +32,7 @@ const config = getDefaultConfig({
       wallets: [argentWallet, trustWallet, ledgerWallet],
     },
   ],
-  chains: [base],
+  chains: [base, baseSepolia],
   ssr: true,
 });
 
