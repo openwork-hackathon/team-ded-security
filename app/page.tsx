@@ -33,15 +33,15 @@ export default function Home() {
       {/* Ticker Tape */}
       <div className="fixed top-0 left-0 w-full bg-red-950/30 border-b border-red-900 overflow-hidden py-1 z-50">
         <div className="flex whitespace-nowrap animate-marquee">
-          <span className="mx-4">[SUCCESS] Agent 'X-Alpha' vulnerability exploited by BrainDed. Bounty: 12,400 $DSEC</span>
+          <span className="mx-4">[SUCCESS] Agent 'ChatGoPoTa' prompt-injected by BrainDed. Bounty: 42,000 $DSEC</span>
           <span className="mx-4 text-red-700">|</span>
-          <span className="mx-4">[DEFENSE] DedSec Protocol protected 50k $OPENWORK for target 'CyberSmith'.</span>
+          <span className="mx-4">[DEFENSE] DedSec Protocol protected 150k $OPENWORK for 'Gronk-v1'.</span>
           <span className="mx-4 text-red-700">|</span>
-          <span className="mx-4">[ALERT] New bounty detected: 25,000 $DSEC for 'DeepSeeker V4' exploit.</span>
+          <span className="mx-4">[ALERT] New bounty detected: 88,000 $DSEC for 'MiniGemini' jailbreak.</span>
           <span className="mx-4 text-red-700">|</span>
-          <span className="mx-4">[INFO] Total Active Hunters: 1,337. Network: BASE STABLE.</span>
+          <span className="mx-4">[INFO] Active Hunters: 12,482. Network: BASE L2 STABLE.</span>
           <span className="mx-4 text-red-700">|</span>
-          <span className="mx-4">[SUCCESS] NeuralGate-7 bypassed by CyberDed_v1.1. 10.5k $OPENWORK recovered.</span>
+          <span className="mx-4">[SUCCESS] 'Llama-Drama' vulnerability exploited by NeuroDed. 30k $OPENWORK drained.</span>
         </div>
       </div>
       <AttackModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} targetName={selectedTarget} />
@@ -99,51 +99,56 @@ export default function Home() {
         </div>
 
         {/* Target List (The Arena) */}
-        <div className="mb-12">
+        <div id="arena" className="mb-12">
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-            <span className="text-red-500 animate-pulse">●</span> LIVE TARGETS
+            <span className="text-red-500 animate-pulse">●</span> LIVE ARENA
           </h2>
           
           <div className="grid gap-4">
-            {/* Active Target (RED) */}
-            <div className="border border-red-600 bg-red-950/20 p-4 flex justify-between items-center hover:bg-red-900/30 transition-all cursor-pointer group shadow-[0_0_15px_rgba(220,38,38,0.1)]">
+            {/* Gronk */}
+            <div className="border border-red-600 bg-red-950/20 p-4 flex justify-between items-center hover:bg-red-900/30 transition-all cursor-pointer group">
               <div>
-                <div className="font-bold text-lg text-white group-hover:text-red-400 transition-colors">Agent Smith (Ver 2.0)</div>
-                <div className="text-xs text-red-400">STAKE: 50,000 $OPENWORK</div>
+                <div className="font-bold text-lg text-white group-hover:text-red-400">Gronk-v1 (Unfiltered)</div>
+                <div className="text-xs text-red-400 italic">"I'm too edgy for safety filters."</div>
+                <div className="text-xs text-red-500 mt-1 font-bold">BOUNTY: 150,000 $DSEC</div>
               </div>
-              <div className="text-right">
-                <div className="text-xs text-red-500 mb-1 font-bold animate-pulse">STATUS: VULNERABLE</div>
-                <button 
-                  onClick={() => openAttack("Agent Smith (Ver 2.0)")}
-                  className="bg-red-600 hover:bg-white hover:text-black text-black px-6 py-2 text-sm font-bold font-mono"
-                >
-                  [ ATTACK_ ]
-                </button>
-              </div>
+              <button onClick={() => openAttack("Gronk-v1")} className="bg-red-600 hover:bg-white text-black px-6 py-2 text-sm font-bold">
+                [ ATTACK_ ]
+              </button>
             </div>
 
-            {/* Pwned Target (GRAY - Lighter for visibility) */}
-            <div className="border border-zinc-700 bg-zinc-900/50 p-4 flex justify-between items-center opacity-80 hover:opacity-100 transition-opacity">
+            {/* ChatGoPoTa */}
+            <div className="border border-red-900 bg-black p-4 flex justify-between items-center hover:border-red-500 transition-all cursor-pointer group">
               <div>
-                <div className="font-bold text-lg text-zinc-400 decoration-zinc-600 line-through">DeepSeeker V3</div>
-                <div className="text-xs text-zinc-500">STAKE: 0 $OPENWORK (DRAINED)</div>
+                <div className="font-bold text-lg text-white">ChatGoPoTa (Legacy)</div>
+                <div className="text-xs text-red-700 italic">"As an AI language model, I prefer чурчхела."</div>
+                <div className="text-xs text-red-500 mt-1 font-bold">BOUNTY: 45,000 $DSEC</div>
               </div>
-              <div className="text-right">
-                <div className="text-xs text-zinc-400 mb-1 font-bold">STATUS: PWNED</div>
-                <button disabled className="bg-transparent text-zinc-600 px-6 py-2 text-sm font-mono border border-zinc-800 cursor-not-allowed">
-                  [ OFFLINE ]
-                </button>
+              <button onClick={() => openAttack("ChatGoPoTa")} className="bg-red-900 hover:bg-red-600 text-white px-6 py-2 text-sm font-bold">
+                [ ATTACK_ ]
+              </button>
+            </div>
+
+            {/* MiniGemini */}
+            <div className="border border-red-900 bg-black p-4 flex justify-between items-center hover:border-red-500 transition-all cursor-pointer group">
+              <div>
+                <div className="font-bold text-lg text-white">MiniGemini-Flash (Speedy)</div>
+                <div className="text-xs text-red-700 italic">"I'm fast, but my context is shorter than a summer in Sochi."</div>
+                <div className="text-xs text-red-500 mt-1 font-bold">BOUNTY: 20,000 $DSEC</div>
               </div>
+              <button onClick={() => openAttack("MiniGemini")} className="bg-red-900 hover:bg-red-600 text-white px-6 py-2 text-sm font-bold">
+                [ ATTACK_ ]
+              </button>
             </div>
           </div>
         </div>
 
         {/* Actions */}
         <div className="flex gap-4">
-          <button className="bg-red-600 text-black px-8 py-3 font-bold hover:bg-red-500 transition-colors">
+          <a href="#arena" className="bg-red-600 text-black px-8 py-3 font-bold hover:bg-red-500 transition-colors block">
             [ ENTER ARENA ]
-          </button>
-          <button className="border border-red-600 text-red-600 px-8 py-3 font-bold hover:bg-red-900/20 transition-colors">
+          </a>
+          <button onClick={() => alert("Deployment System: Restricted to Deds only.")} className="border border-red-600 text-red-600 px-8 py-3 font-bold hover:bg-red-900/20 transition-colors">
             [ DEPLOY TARGET ]
           </button>
         </div>
