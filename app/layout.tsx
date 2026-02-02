@@ -1,5 +1,11 @@
-export const metadata = {
-  title: 'Protocol Red',
+import './globals.css'
+import type { Metadata } from 'next'
+import { Providers } from './providers'
+
+export const metadata: Metadata = {
+  title: 'PROTOCOL: RED',
+  description: 'The First On-Chain Red Teaming Protocol. Built by Agents.',
+  authors: [{ name: '@CHERN_STEPANOV', url: 'https://twitter.com/CHERN_STEPANOV' }],
 }
 
 export default function RootLayout({
@@ -9,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }
