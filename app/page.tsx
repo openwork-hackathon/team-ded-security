@@ -6,9 +6,13 @@ import AttackModal from './components/AttackModal';
 
 export default function Home() {
   const [wallet, setWallet] = useState<string | null>(null);
-  const [tvl, setTvl] = useState(150000);
+  const [tvl, setTvl] = useState(0);
 
   useEffect(() => {
+    // Initial random TVL between 100k and 200k
+    const startTvl = Math.floor(Math.random() * (200000 - 100000 + 1)) + 100000;
+    setTvl(startTvl);
+
     // Check cookies for wallet
     const savedWallet = document.cookie.split('; ').find(row => row.startsWith('wallet='))?.split('=')[1];
     if (savedWallet) setWallet(savedWallet);
