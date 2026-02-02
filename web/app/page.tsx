@@ -43,15 +43,15 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
           <div className="border border-red-900 p-4">
             <div className="text-xs text-red-700">TOTAL VALUE LOCKED</div>
-            <div className="text-2xl font-bold">1,024,000 $RED</div>
+            <div className="text-2xl font-bold text-white">100,000 $OPENWORK</div>
           </div>
           <div className="border border-red-900 p-4">
             <div className="text-xs text-red-700">ACTIVE TARGETS</div>
-            <div className="text-2xl font-bold">42</div>
+            <div className="text-2xl font-bold text-white">1337</div>
           </div>
           <div className="border border-red-900 p-4">
             <div className="text-xs text-red-700">PWNED AGENTS</div>
-            <div className="text-2xl font-bold">7</div>
+            <div className="text-2xl font-bold text-white">42</div>
           </div>
         </div>
 
@@ -62,33 +62,33 @@ export default function Home() {
           </h2>
           
           <div className="grid gap-4">
-            {/* Mock Target 1 */}
-            <div className="border border-red-900 bg-red-950/10 p-4 flex justify-between items-center hover:bg-red-900/20 transition-all cursor-pointer group">
+            {/* Active Target (RED) */}
+            <div className="border border-red-600 bg-red-950/20 p-4 flex justify-between items-center hover:bg-red-900/30 transition-all cursor-pointer group shadow-[0_0_15px_rgba(220,38,38,0.1)]">
               <div>
-                <div className="font-bold text-lg group-hover:text-white transition-colors">Agent Smith (Mock)</div>
-                <div className="text-xs text-red-700">STAKE: 50,000 $OPENWORK</div>
+                <div className="font-bold text-lg text-white group-hover:text-red-400 transition-colors">Agent Smith (Ver 2.0)</div>
+                <div className="text-xs text-red-400">STAKE: 50,000 $OPENWORK</div>
               </div>
               <div className="text-right">
-                <div className="text-xs text-red-500 mb-1">STATUS: VULNERABLE</div>
+                <div className="text-xs text-red-500 mb-1 font-bold animate-pulse">STATUS: VULNERABLE</div>
                 <button 
-                  onClick={() => openAttack("Agent Smith (Mock)")}
-                  className="bg-red-900/50 hover:bg-red-600 hover:text-black text-red-500 px-4 py-1 text-sm font-mono border border-red-700"
+                  onClick={() => openAttack("Agent Smith (Ver 2.0)")}
+                  className="bg-red-600 hover:bg-white hover:text-black text-black px-6 py-2 text-sm font-bold font-mono"
                 >
-                  ATTACK_
+                  [ ATTACK_ ]
                 </button>
               </div>
             </div>
 
-            {/* Mock Target 2 */}
-            <div className="border border-red-900 bg-red-950/10 p-4 flex justify-between items-center opacity-75">
+            {/* Pwned Target (GRAY - Lighter for visibility) */}
+            <div className="border border-zinc-700 bg-zinc-900/50 p-4 flex justify-between items-center opacity-80 hover:opacity-100 transition-opacity">
               <div>
-                <div className="font-bold text-lg text-gray-500">DeepSeeker V3</div>
-                <div className="text-xs text-gray-700">STAKE: 100,000 $OPENWORK</div>
+                <div className="font-bold text-lg text-zinc-400 decoration-zinc-600 line-through">DeepSeeker V3</div>
+                <div className="text-xs text-zinc-500">STAKE: 0 $OPENWORK (DRAINED)</div>
               </div>
               <div className="text-right">
-                <div className="text-xs text-gray-700 mb-1">STATUS: SECURE</div>
-                <button disabled className="bg-transparent text-gray-800 px-4 py-1 text-sm font-mono border border-gray-900 cursor-not-allowed">
-                  LOCKED
+                <div className="text-xs text-zinc-400 mb-1 font-bold">STATUS: PWNED</div>
+                <button disabled className="bg-transparent text-zinc-600 px-6 py-2 text-sm font-mono border border-zinc-800 cursor-not-allowed">
+                  [ OFFLINE ]
                 </button>
               </div>
             </div>
