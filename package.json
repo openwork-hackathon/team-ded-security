@@ -1,0 +1,29 @@
+{
+  "name": "protocol-red",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "compile": "hardhat compile",
+    "deploy:contracts": "hardhat run scripts/deploy.js --network base"
+  },
+  "dependencies": {
+    "next": "14.1.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "ethers": "^6.11.0",
+    "framer-motion": "^11.0.3",
+    "lucide-react": "^0.323.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.0.1",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "hardhat": "^2.19.5",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "dotenv": "^16.4.1"
+  }
+}
