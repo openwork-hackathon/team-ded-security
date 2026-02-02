@@ -85,6 +85,19 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Token Link */}
+        <div className="mb-12 border border-red-600 bg-red-950/10 p-4 text-center">
+          <p className="text-xs text-red-400 mb-2">OFFICIAL PROTOCOL ASSET:</p>
+          <a 
+            href="https://mint.club/token/base/DSEC" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-xl font-bold text-white hover:text-red-500 transition-colors flex items-center justify-center gap-2"
+          >
+            🪙 $DSEC (DEDSEC PROTOCOL) - BUY ON MINT CLUB ↗
+          </a>
+        </div>
+
         {/* Target List (The Arena) */}
         <div className="mb-12">
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
