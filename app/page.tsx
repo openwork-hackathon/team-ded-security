@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-red-500 font-mono p-8 selection:bg-red-900 selection:text-white">
@@ -8,8 +10,18 @@ export default function Home() {
         
         {/* Header */}
         <header className="mb-12 border-b border-red-900 pb-4 flex justify-between items-center">
-          <h1 className="text-4xl font-bold tracking-tighter glitch-text">PROTOCOL: RED</h1>
-          <div className="text-xs text-red-700 animate-pulse">SYSTEM: ONLINE</div>
+          <div>
+            <h1 className="text-4xl font-bold tracking-tighter glitch-text">PROTOCOL: RED</h1>
+            <div className="text-xs text-red-700 animate-pulse">SYSTEM: ONLINE</div>
+          </div>
+          <ConnectButton 
+            accountStatus={{
+              smallScreen: 'avatar',
+              largeScreen: 'full',
+            }}
+            chainStatus="none"
+            showBalance={false}
+          />
         </header>
 
         {/* Hero */}

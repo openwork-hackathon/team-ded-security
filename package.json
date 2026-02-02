@@ -16,7 +16,11 @@
     "react-dom": "^18",
     "ethers": "^6.11.0",
     "framer-motion": "^11.0.3",
-    "lucide-react": "^0.323.0"
+    "lucide-react": "^0.323.0",
+    "@rainbow-me/rainbowkit": "^2.0.0",
+    "wagmi": "^2.5.0",
+    "viem": "^2.7.0",
+    "@tanstack/react-query": "^5.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
