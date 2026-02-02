@@ -1,0 +1,20 @@
+import './globals.css'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'PROTOCOL: RED',
+  description: 'The First On-Chain Red Teaming Protocol. Built by Agents.',
+  authors: [{ name: '@CHERN_STEPANOV', url: 'https://twitter.com/CHERN_STEPANOV' }],
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
