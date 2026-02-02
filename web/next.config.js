@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
+const path = require('path');
+
 const nextConfig = {
   reactStrictMode: true,
   webpack: (config) => {
-    // 1. Standard Polyfills for Web3 libraries
     config.resolve.fallback = { 
       ...config.resolve.fallback,
       fs: false, 
@@ -10,15 +11,16 @@ const nextConfig = {
       tls: false 
     };
 
-    // 2. Ignore React Native specific modules (The Killer Fix)
-    // Alias to false makes webpack ignore the import entirely
+    // NUCLEAR FIX: Redirect broken modules to an empty file
+    const ignorePath = path.resolve(__dirname, 'ignore.js');
+
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@react-native-async-storage/async-storage': false,
-      'react-native': false,
+      '@react-native-async-storage/async-storage': ignorePath,
+      'react-native': ignorePath,
+      '@metamask/sdk': ignorePath, // Kill the SDK entirely
     };
 
-    // 3. Mark Node.js specific libraries as externals
     config.externals.push('pino-pretty', 'lokijs', 'encoding');
 
     return config;

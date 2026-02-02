@@ -24,9 +24,8 @@ const config = createConfig({
     [baseSepolia.id]: http(),
   },
   connectors: [
-    injected(), // Works with MetaMask, Rabby, etc. without SDK
-    coinbaseWallet({ appName: 'Protocol Red' }),
-    // walletConnect({ projectId }), // Uncomment if you have a Project ID
+    injected(), 
+    // coinbaseWallet({ appName: 'Protocol Red' }), // Temporary disable to isolate issue
   ],
   ssr: true,
 });
