@@ -9,6 +9,19 @@ export default function Home() {
   // VERCEL HOOK TEST: ACTIVATED
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedTarget, setSelectedTarget] = useState('');
+  const [tvl, setTvl] = React.useState(0);
+
+  React.useEffect(() => {
+    // Initial random TVL between 100,000 and 200,000
+    const initialTvl = Math.floor(Math.random() * (200000 - 100000 + 1)) + 100000;
+    setTvl(initialTvl);
+
+    const interval = setInterval(() => {
+      setTvl(prev => prev + Math.floor(Math.random() * 500) + 100);
+    }, Math.floor(Math.random() * 3000) + 2000); // 2-5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   const openAttack = (name: string) => {
     setSelectedTarget(name);
@@ -44,7 +57,9 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
           <div className="border border-red-900 p-4">
             <div className="text-xs text-red-700">TOTAL VALUE LOCKED</div>
-            <div className="text-2xl font-bold text-white">100,000 $OPENWORK</div>
+            <div className="text-2xl font-bold text-white tracking-widest">
+              {tvl.toLocaleString()} $DSEC
+            </div>
           </div>
           <div className="border border-red-900 p-4">
             <div className="text-xs text-red-700">ACTIVE TARGETS</div>
