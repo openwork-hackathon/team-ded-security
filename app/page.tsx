@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import SlotCounter from './components/SlotCounter';
 import AttackModal from './components/AttackModal';
 import { useAccount } from 'wagmi';
@@ -22,7 +23,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-black text-red-600 font-mono p-4 md:p-8 selection:bg-red-900 selection:text-white">
+    <main className="min-h-screen bg-black text-red-600 font-mono p-4 md:p-8 selection:bg-red-900 selection:text-white relative overflow-hidden">
+      {/* Matrix Rain Background */}
+      <MatrixRain />
+
       {/* Ticker */}
       <div className="fixed top-0 left-0 w-full bg-red-950/20 border-b border-red-900 py-1 z-50 overflow-hidden text-[10px]">
         <div className="flex whitespace-nowrap animate-marquee">
@@ -34,9 +38,12 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto border-2 border-red-900 p-6 md:p-12 mt-12 bg-[#050000] shadow-[0_0_40px_rgba(220,38,38,0.1)]">
-        <header className="flex justify-between items-start mb-16 border-b border-red-900 pb-8">
+      <div className="max-w-4xl mx-auto border-2 border-red-900 p-6 md:p-12 mt-12 bg-[#050000]/90 backdrop-blur shadow-[0_0_40px_rgba(220,38,38,0.1)] relative z-10">
+        <header className="flex justify-between items-start mb-16 border-b border-red-900 pb-8 relative z-10">
           <div>
+            <Link href="/leaderboard" className="text-[10px] text-red-500 hover:text-white transition-colors block mb-2">
+              [ VIEW_LEADERBOARD → ]
+            </Link>
             <h1 className="text-5xl font-black tracking-tighter glitch-text mb-2" data-text="PROTOCOL: RED">PROTOCOL: RED</h1>
             <div className="text-[10px] opacity-50 uppercase tracking-[0.3em]">Security Enforcement Layer</div>
           </div>
@@ -93,5 +100,75 @@ export default function Home() {
         </footer>
       </div>
     </main>
+  );
+}
+
+// Matrix Rain Component
+function MatrixRain() {
+  const canvasRef = React.useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops: number[] = [];
+
+    for (let i = 0; i < columns; i++) {
+      drops[i] = Math.random() * -100;
+    }
+
+    let frameCount = 0;
+    const draw = () => {
+      frameCount++;
+      if (frameCount % 2 !== 0) {
+        requestAnimationFrame(draw);
+        return;
+      }
+
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#991b1b'; // Darker red for subtlety
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+
+      requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 pointer-events-none opacity-10"
+      style={{ zIndex: 0 }}
+    />
   );
 }
