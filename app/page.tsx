@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import SlotCounter from './components/SlotCounter';
 import AttackModal from './components/AttackModal';
+import SecurityScanner from './components/SecurityScanner';
 import { useAccount } from 'wagmi';
 import SimpleConnect from './components/SimpleConnect';
 
@@ -164,6 +165,11 @@ export default function Home() {
             />
             Show Guide
           </label>
+        </div>
+
+        {/* Security Scanner */}
+        <div className="mb-8">
+          <SecurityScanner />
         </div>
 
         {/* Targets */}
